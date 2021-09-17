@@ -1,7 +1,8 @@
 import { combineReducers } from "redux"
+import galleryReducer from "./gallery.reducer";
 
 const rootReducer = combineReducers({
-  default: () => [],
+  gallery: galleryReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
