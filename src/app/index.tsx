@@ -13,6 +13,7 @@ import store from "./store"
 import Header from './components/Header';
 // Pages
 const HomePage = lazy(() => import("./pages/HomePage"))
+const PageNotFound = lazy(() => import("./pages/404"))
 
 
 const App: React.FC = () => {
@@ -63,6 +64,7 @@ const App: React.FC = () => {
                                 >
                                     <Switch>
                                         <Route component={HomePage} exact path="/"/>
+                                        <Route component={PageNotFound} />
                                     </Switch>
                                 </Suspense>
                             </Container>

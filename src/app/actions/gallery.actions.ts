@@ -1,9 +1,9 @@
-import axios, {AxiosError} from "axios"
+import axios from "axios"
 import { get } from "lodash"
 
 export const fetchGalleryAction = (page: string | number | null) => {
     return new Promise(async (resolve, reject) => {
-        const url = `${process.env.REACT_APP_FLICKR_API_URL}flickr.photos.getRecent&api_key=${process.env.REACT_APP_FLICKR_API_KEY}&format=json&nojsoncallback=1&extras=url_m,url_l,url_o`
+        const url = `${process.env.REACT_APP_FLICKR_API_URL}flickr.photos.getRecent&api_key=${process.env.REACT_APP_FLICKR_API_KEY}&page=${page}&format=json&nojsoncallback=1&extras=url_q,url_m,url_l,url_o`
 
         try {
             const response = await axios.get(url)
@@ -11,7 +11,7 @@ export const fetchGalleryAction = (page: string | number | null) => {
             const photos = get(response, ['data', 'photos', 'photo'])
 
             resolve(photos)
-        } catch (err: AxiosError | any) {
+        } catch (err: any) {
             if (err.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx

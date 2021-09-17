@@ -10,6 +10,9 @@ export interface Photo {
     ispublic: number
     isfriend: number
     isfamily: number
+    url_q: string
+    height_q: number
+    width_q: number
     url_m: string
     height_m: number
     width_m: number
