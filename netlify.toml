@@ -1,0 +1,15 @@
+[build]
+  publish = "build"
+  command = "yarn run build"
+
+[build.environment]
+  RUBY_VERSION = "2.6.2"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  # Local dev command. A.k.a npm start
+  command = "react-scripts start"
