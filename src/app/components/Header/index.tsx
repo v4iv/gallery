@@ -19,7 +19,7 @@ import {githubSVGPath} from "../../../assets/images/svg";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../reducers";
 import {fetchGalleryAction} from "../../actions/gallery.actions";
-import {debounce} from "lodash";
+import {debounce, isEmpty} from "lodash";
 import {SEARCH_ERROR, SEARCH_REQUEST, SEARCH_SUCCESS} from "../../constants/search.constants";
 // Lazy Load
 const ResultFlyout = lazy(() => import("../ResultFlyout"))
@@ -135,7 +135,7 @@ const Header: React.FC = () => {
                 </Tooltip>
             </Box>
 
-            {query.length && (
+            {!isEmpty(query) && (
                 <Layer zIndex={resultsZIndex}>
                     <Popover
                         anchor={anchorRef.current!}

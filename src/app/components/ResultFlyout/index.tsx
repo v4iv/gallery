@@ -31,7 +31,7 @@ const ResultFlyout: React.FC<IProps> = (props) => {
                     <Icon icon="visit" accessibilityLabel="All Results" color="darkGray" />
                 </Box>
                 <Text align="center" color="darkGray" weight="bold">
-                    <RouterLink to={`/search?q=${query}`}>
+                    <RouterLink to={`/search?q=${query}`} target="blank">
                         See All Results
                     </RouterLink>
                 </Text>

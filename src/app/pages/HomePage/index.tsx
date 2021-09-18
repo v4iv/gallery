@@ -1,16 +1,12 @@
 import React, {lazy, Suspense, useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import {isEmpty} from "lodash"
-import {
-    Box,
-    Divider,
-    Heading,
-    Spinner,
-} from "gestalt"
+import {Box, Divider, Spinner,} from "gestalt"
 import {RootState} from "../../reducers"
 import {FETCH_GALLERY_ERROR, FETCH_GALLERY_REQUEST, FETCH_GALLERY_SUCCESS} from "../../constants/gallery.constants";
 import {fetchGalleryAction} from "../../actions/gallery.actions";
 import SEO from "../../components/SEO"
+import RecentSearches from "../../components/RecentSearches";
 // Lazy Load
 const PhotoGrid = lazy(() => import("../../components/PhotoGrid"))
 const ErrorToast = lazy(() => import("../../components/ErrorToast"))
@@ -66,14 +62,7 @@ const HomePage: React.FC = () => {
             />
 
             <Box paddingY={1}>
-                <Box
-                    marginBottom={2}
-                    display="flex"
-                    justifyContent="between"
-                    alignItems="center"
-                >
-                    <Heading size="md" align="center">Previous Searches...</Heading>
-                </Box>
+                <RecentSearches/>
 
                 <Divider/>
 
