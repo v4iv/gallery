@@ -71,7 +71,7 @@ const Header: React.FC = () => {
         ({value}) => {
             setQuery(value)
 
-            debouncedSearch(value)
+            if (value.length) debouncedSearch(value)
         }, [debouncedSearch])
 
     return (
@@ -152,7 +152,7 @@ const Header: React.FC = () => {
                                 </Box>
                             }
                         >
-                            <ResultFlyout results={results} loading={loading} />
+                            <ResultFlyout results={results} loading={loading} query={query} />
                         </Suspense>
                     </Popover>
                 </Layer>
