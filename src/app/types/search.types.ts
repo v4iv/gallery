@@ -14,6 +14,9 @@ export interface PhotoResult {
     url_sq: string
     height_sq: number
     width_sq: number
+    url_m: string
+    height_m: number
+    width_m: number
 }
 
 export interface SearchState {
