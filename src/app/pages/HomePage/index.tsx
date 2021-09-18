@@ -8,11 +8,11 @@ import {
     Spinner,
 } from "gestalt"
 import {RootState} from "../../reducers"
-import SEO from "../../components/SEO"
-import PhotoGrid from "../../components/PhotoGrid";
 import {FETCH_GALLERY_ERROR, FETCH_GALLERY_REQUEST, FETCH_GALLERY_SUCCESS} from "../../constants/gallery.constants";
 import {fetchGalleryAction} from "../../actions/gallery.actions";
+import SEO from "../../components/SEO"
 // Lazy Load
+const PhotoGrid = lazy(() => import("../../components/PhotoGrid"))
 const ErrorToast = lazy(() => import("../../components/ErrorToast"))
 
 const HomePage: React.FC = () => {
@@ -32,7 +32,9 @@ const HomePage: React.FC = () => {
             type: FETCH_GALLERY_REQUEST,
         })
 
-        fetchGalleryAction(page)
+        const url = `${process.env.REACT_APP_FLICKR_API_URL}flickr.photos.getRecent&api_key=${process.env.REACT_APP_FLICKR_API_KEY}&page=${page}&format=json&nojsoncallback=1&extras=url_q,url_m,url_l,url_o`
+
+        fetchGalleryAction(url)
             .then((res) => {
                 dispatch({
                     type: FETCH_GALLERY_SUCCESS,
@@ -74,6 +76,10 @@ const HomePage: React.FC = () => {
                 </Box>
 
                 <Divider/>
+
+                {isEmpty(photoList) && loading && <Box paddingY={6}>
+                    <Spinner accessibilityLabel="Loading..." show />
+                </Box>}
 
                 {!isEmpty(photoList) && (
                     <Suspense

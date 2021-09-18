@@ -25,7 +25,7 @@ const PhotoCard: React.FC<IProps> = (props) => {
             <Box margin={1} rounding={2} padding={2} borderStyle="sm">
                 <Card image={<Avatar name={title} src={icon}/>}>
                     <Box paddingX={3} paddingY={2}>
-                        <Heading size="sm" truncate>
+                        <Heading size="sm">
                             {capitalize(title)}
                         </Heading>
                     </Box>

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { get } from "lodash"
 
-export const fetchGalleryAction = (url: string) => {
+export const searchAction = (url: string) => {
     return new Promise(async (resolve, reject) => {
         try {
             const response = await axios.get(url)
